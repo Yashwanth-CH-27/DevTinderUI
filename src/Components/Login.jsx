@@ -7,8 +7,9 @@ import { BASE_URL } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [ emailId, setEmailId ] = useState("yaswanth@gmail.com");
-  const [ password, setPassword ] = useState("Yaswanth@123");
+  const [ emailId, setEmailId ] = useState("yaswanth@gmail.com"); //yaswanth@gmail.com
+  const [ password, setPassword ] = useState("Yaswanth@123"); //Yaswanth@123
+  const [errMessage, setErrMeesage] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -21,6 +22,7 @@ const Login = () => {
       dispatch(addUser(res.data))
       navigate("/")
     } catch (err) {
+      setErrMeesage(err?.response?.data)
       console.log(err);
     }
   };
@@ -50,6 +52,7 @@ const Login = () => {
             />
           </fieldset>
           <div className="card-actions justify-center py-5">
+            <p className="text-red-700">{errMessage}</p>
             <button className="btn btn-primary" onClick={handleLogIn}>Log in</button>
           </div>
         </div>
