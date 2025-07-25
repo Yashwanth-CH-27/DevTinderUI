@@ -4,6 +4,7 @@ import Core from "./Core";
 import Layout from "./Layout";
 import Profile from "./Profile";
 import ProtectedRoute from "./ProtectedRoutes";
+import Connections from "./Connections";
 
 
 const Body = () => {
@@ -27,6 +28,10 @@ const Body = () => {
             path:"profile",
             element:<Profile/>
         },
+        {
+          path:"connections",
+          element:<Connections/>
+        }
       ],
     },
   ]);
