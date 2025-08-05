@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./Header";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,9 +17,12 @@ const Login = () => {
   const navigate = useNavigate();
   const user = useSelector(store => store.user)
 
+  useEffect(() => {
+  if (user) navigate("/");
+}, [user, navigate]);
+
   const handleLogIn = async () => {
     try {
-      if(user) return navigate("/")
       const res = await axios.post( BASE_URL + "login", {
         emailId,
         password,
