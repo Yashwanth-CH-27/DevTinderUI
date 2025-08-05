@@ -1,1 +1,1 @@
-export const BASE_URL = "http://localhost:7777/";
+export const BASE_URL = "https://devconnect-backend-2-vixn.onrender.com/";
