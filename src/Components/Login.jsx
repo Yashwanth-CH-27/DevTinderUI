@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Header from "./Header";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { BASE_URL } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
@@ -15,9 +15,11 @@ const Login = () => {
   const [errMessage, setErrMeesage] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user = useSelector(store => store.user)
 
   const handleLogIn = async () => {
     try {
+      if(user) return navigate("/")
       const res = await axios.post( BASE_URL + "login", {
         emailId,
         password,
